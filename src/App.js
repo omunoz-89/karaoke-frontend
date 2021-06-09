@@ -13,6 +13,9 @@ import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import About from "./components/About";
+import User from "./components/User"
+import Video from "./components/Video"
+
 
 //Private route component
 const PrivateRoute = ({component: Component, ...rest}) => {
@@ -77,11 +80,15 @@ function App() {
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
       <div className='container mt-5'>
         <Switch>
-          <Route path='/signup' component={Signup}></Route>
+          <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
+          <Route path = '/user' component={User} />
+          <Route path = '/video' component={Video} />
+
           <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
+
         </Switch>
       </div>
 
