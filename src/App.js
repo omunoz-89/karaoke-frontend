@@ -16,6 +16,7 @@ import About from "./components/About";
 import User from "./components/User"
 import Video from "./components/Video"
 
+const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
 
 //Private route component
 const PrivateRoute = ({component: Component, ...rest}) => {
@@ -32,7 +33,23 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  
+  const [users, setUsers] = useState([])
+  const [videos, setVideos] = useState([])
+  const [test, setTest] = useState('')
+
+  const fetchAllUsers = async () => {
+      const resp = await fetch(CONNECTION_URI+"/api/users/all-users")
+      const respJSON = await resp.json()
+      setUsers(respJSON)
+      console.log('respJSON: ', respJSON)
+  }
+ 
+  const fetchAllVideos = async () => {
+    const resp = await fetch(CONNECTION_URI+"/api/videos/all-videos")
+    const respJSON = await resp.json()
+    setVideos(respJSON)
+}
+
   useEffect(() => {
     let token;
     //if there is token inside of local storage, then the user is not authenticated
@@ -44,8 +61,17 @@ function App() {
       console.log("token", token);
       setAuthToken(token);
       setCurrentUser(token);
+      setTest('Hi')
     }
+
+    // fetchAllUsers()
+    console.log('users: ', users)
+    // fetchAllVideos()
   }, []);
+
+  useEffect(()=> {
+      fetchAllUsers()
+  }, [test])
   
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
@@ -67,11 +93,36 @@ function App() {
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
       <div className='container mt-5'>
         <Switch>
+            {/* PUBLIC ROUTES */}
           <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
-          <Route path = '/user' component={User} />
+          
+          {/* PRIVATE ROUTES */}
+          <Route path = '/users/:id' render={(routeProps) => {
+              const user = users.find(u => {
+                  console.log('route props', routeProps)
+                  return u._id === routeProps.match.params.id
+              })
+              return <User {...routeProps} user={user} reload={fetchAllUsers} />
+          }}/>
+          
+
+
+
+
+          
+          <Route path = '/videos/:id' render={(routeProps) => {
+              const video = videos.find(v => {
+                  console.log(routeProps)
+                  return v._id === routeProps.match.params.id
+              })
+              return <User {...routeProps} video={video} reload={fetchAllVideos} />
+          }}/>
+          
+
+
           <Route path = '/video' component={Video} />
 
           <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
