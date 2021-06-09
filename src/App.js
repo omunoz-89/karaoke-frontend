@@ -29,6 +29,18 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+  // fetchData on songs - Edi
+  // const [videos, setVideos] = useState([]);
+  // const [finishedLoading, setFinishedLoading] = useState(false);
+  // const fetchVideos = async () => {
+  //   const response = await fetch(CONNECTION_URI+"/videos")
+  //   const respJSON = await response.json();
+  //   console.log(respJSON)
+  //   setVideos(respJSON.videos)
+  //   setFinishedLoading(true)
+  // }
+
   
   useEffect(() => {
     let token;
@@ -42,6 +54,7 @@ function App() {
       setAuthToken(token);
       setCurrentUser(token);
     }
+    // fetchVideos() // Added by Edi
   }, []);
   
   const nowCurrentUser = (userData) => {
