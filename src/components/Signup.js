@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import setAuthToken from '../utils/setAuthToken';
+import jwt_decode from 'jwt-decode';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const Signup = () => {
+
+const Signup = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,31 +31,6 @@ const Signup = () => {
     }
 
 
-
-//   const handleSubmit = (e) => {
-//       e.preventDefault();
-
-//       //check to make sure passwords match
-//       if(password === confirmPassword && password.length >= 8) {
-//           const payload = {name, email, password};
-//           let url = `${REACT_APP_SERVER_URL}/api/users/signup`
-//           axios.post(url, payload)
-//           .then(response => {
-//               console.log(response.data);
-//               setRedirect(true);
-//           })
-//           .catch(error => {
-//               console.log(error)
-//           })
-//         } else {
-//             if(!password === confirmPassword) {
-//                 alert('Password and Confirm password need to match. Please try again...')
-//             } else {
-//                 alert('Password needs to be at least 8 characters or more. Please try again...')
-//             }
-//         }
-//   };
-
 const handleSubmit = async (e) => {
     e.preventDefault();
     // check to make sure passwords match
@@ -61,8 +39,11 @@ const handleSubmit = async (e) => {
         let url = `${REACT_APP_SERVER_URL}/api/users/signup`;
         try {
             let response = await axios.post(url, payload);
-            let { data } = response;
-            console.log(data);
+            const { token } = response.data
+            localStorage.setItem('jwtToken', token)
+            setAuthToken(token)
+            const decoded = await jwt_decode(token)
+            props.nowCurrentUser(decoded)
             setRedirect(true);
         } catch (error) {
             alert('Error occurred, please try again...');
@@ -76,7 +57,7 @@ const handleSubmit = async (e) => {
     }
 }
 
-if (redirect) return <Redirect to="/login" />
+if (redirect) return <Redirect to="/profile" />
 
   return (
     <div className="row mt-4">

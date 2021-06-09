@@ -64,7 +64,7 @@ function App() {
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
       <div className='container mt-5'>
         <Switch>
-          <Route path='/signup' component={Signup}></Route>
+          <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
