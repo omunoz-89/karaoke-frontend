@@ -99,28 +99,11 @@ function App() {
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
-          
-          {/* PRIVATE ROUTES */}
-          <Route path = '/users/:id' render={(routeProps) => {
-              const user = users.find(u => {
-                  console.log('route props', routeProps)
-                  return u._id === routeProps.match.params.id
-              })
-              return <User {...routeProps} user={user} reload={fetchAllUsers} />
-          }}/>
-          
-
-
-
-
-          
+          <Route path = '/user' component={User} />
+          {/* <Route path = '/video' component={Video} /> */}
           <Route path = '/videos/:id' render={(routeProps) => {
-              return <Video {...routeProps} reload={fetchAllVideos} />
+              return <Video {...routeProps} />
           }}/>
-          
-
-
-          <Route path = '/video' component={Video} />
 
           <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
 
