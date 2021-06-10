@@ -32,12 +32,13 @@ const Video = (props) => {
     // })
 
     useEffect(()=> {
-        fetchVideo()
+        // fetchVideo()
+        console.log(CONNECTION_URI)
         
     }, [])
 
     useEffect(()=> {
-        fetchComment()
+        // fetchComment()
         
     }, [video])
 

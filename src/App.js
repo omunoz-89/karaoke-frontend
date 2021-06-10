@@ -17,6 +17,7 @@ import User from "./components/User"
 import Video from "./components/Video"
 
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
+const KEY = process.env.API_KEY
 
 //Private route component
 const PrivateRoute = ({component: Component, ...rest}) => {
