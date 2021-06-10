@@ -13,12 +13,14 @@ const Video = (props) => {
     }
 
     const fetchComment = async () => {
-        video.comments.forEach( async (c) => {
-            const resp = await fetch(CONNECTION_URI+`/api/comments/${c._id}`)
+        let commentArray =[]
+        const allComments = video.comments.map( async (c) => {
+            const resp = await fetch(CONNECTION_URI+`/api/comments/${c}`)
             const respJSON = await resp.json()
-            setComments(comments => [...comments, respJSON])
+            commentArray.push(respJSON)
+            return respJSON           
         })
-        
+        setComments(commentArray)
     }
     
     // let allComments = video.comments.map((c, idx)=> {
@@ -38,11 +40,6 @@ const Video = (props) => {
         fetchComment()
         
     }, [video])
-    
-    useEffect(()=> {
-        console.log(comments)
-        
-    }, [comments])
 
 
     return(
