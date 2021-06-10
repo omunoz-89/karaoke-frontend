@@ -72,7 +72,10 @@ function App() {
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
           <Route path = '/user' component={User} />
-          <Route path = '/video' component={Video} />
+          {/* <Route path = '/video' component={Video} /> */}
+          <Route path = '/videos/:id' render={(routeProps) => {
+              return <Video {...routeProps} />
+          }}/>
 
           <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
 
