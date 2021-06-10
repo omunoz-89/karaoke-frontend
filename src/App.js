@@ -15,6 +15,8 @@ import Login from "./components/Login";
 import About from "./components/About";
 import User from "./components/User"
 import Video from "./components/Video"
+import Results from "./components/Results"
+
 
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
 const KEY = process.env.API_KEY
@@ -99,6 +101,8 @@ function App() {
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route exact path='/' component={Welcome}/>
+          <Route exact path='/search/results' component={Results}/>
+
           
           {/* PRIVATE ROUTES */}
           <Route path = '/users/:id' render={(routeProps) => {
