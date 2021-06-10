@@ -33,17 +33,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-  // fetchData on songs - Edi
-  // const [videos, setVideos] = useState([]);
-  // const [finishedLoading, setFinishedLoading] = useState(false);
-  // const fetchVideos = async () => {
-  //   const response = await fetch(CONNECTION_URI+"/videos")
-  //   const respJSON = await response.json();
-  //   console.log(respJSON)
-  //   setVideos(respJSON.videos)
-  //   setFinishedLoading(true)
-  // }
-
   
   useEffect(() => {
     let token;
@@ -57,7 +46,6 @@ function App() {
       setAuthToken(token);
       setCurrentUser(token);
     }
-    // fetchVideos() // Added by Edi
   }, []);
   
   const nowCurrentUser = (userData) => {
@@ -78,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
-      <div className='container mt-5'>
+      <div className='container5'>
         <Switch>
           <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
