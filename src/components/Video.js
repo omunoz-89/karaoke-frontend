@@ -10,7 +10,6 @@ const Video = (props) => {
 
 
     const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
-
     const fetchVideo = async () => {
         const resp = await fetch(CONNECTION_URI+`/api/videos/${props.match.params.id}`)
         const respJSON = await resp.json()
