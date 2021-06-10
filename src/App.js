@@ -16,6 +16,8 @@ import About from "./components/About";
 import User from "./components/User"
 import Video from "./components/Video"
 import Results from "./components/Results"
+import Record from "./components/Record"
+
 
 
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
@@ -100,6 +102,8 @@ function App() {
           <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
+          <Route path='/record' component={Record} />
+
           <Route exact path='/' component={Welcome}/>
           <Route exact path='/search/results' component={Results}/>
 
