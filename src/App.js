@@ -69,9 +69,9 @@ function App() {
     // fetchAllVideos()
   }, []);
 
-  useEffect(()=> {
-      fetchAllUsers()
-  }, [test])
+//   useEffect(()=> {
+//       fetchAllUsers()
+//   }, [test])
   
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
@@ -114,11 +114,7 @@ function App() {
 
           
           <Route path = '/videos/:id' render={(routeProps) => {
-              const video = videos.find(v => {
-                  console.log(routeProps)
-                  return v._id === routeProps.match.params.id
-              })
-              return <User {...routeProps} video={video} reload={fetchAllVideos} />
+              return <Video {...routeProps} reload={fetchAllVideos} />
           }}/>
           
 
