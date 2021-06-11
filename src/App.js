@@ -25,24 +25,39 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     return user ? <Component {...rest} {...props} /> : <Redirect to='/login' />
   }} />
 }
+
+import User from "./components/User";
+import Video from "./components/Video";
+import Results from "./components/Results";
+import Record from "./components/Record";
+
+const CONNECTION_URI = process.env.REACT_APP_SERVER_URL;
+const KEY = process.env.API_KEY;
+
+//Private route component
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  console.log("This is a private route");
+  let user = localStorage.getItem("jwtToken");
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        return user ? (
+          <Component {...rest} {...props} />
+        ) : (
+          <Redirect to="/login" />
+        );
+      }}
+    />
+  );
+};
+
 function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [users, setUsers] = useState([])
-  const [videos, setVideos] = useState([])
-  const [test, setTest] = useState('')
-  const fetchAllUsers = async () => {
-      const resp = await fetch(CONNECTION_URI+"/api/users/all-users")
-      const respJSON = await resp.json()
-      setUsers(respJSON)
-      console.log('respJSON: ', respJSON)
-  }
-  const fetchAllVideos = async () => {
-    const resp = await fetch(CONNECTION_URI+"/api/videos/all-videos")
-    const respJSON = await resp.json()
-    setVideos(respJSON)
-}
+
+
   useEffect(() => {
     let token;
     //if there is token inside of local storage, then the user is not authenticated
@@ -54,19 +69,12 @@ function App() {
       console.log("token", token);
       setAuthToken(token);
       setCurrentUser(token);
-      setTest('Hi')
     }
-    // fetchAllUsers()
-    console.log('users: ', users)
-    // fetchAllVideos()
-  }, []);
-//   useEffect(()=> {
-//       fetchAllUsers()
-//   }, [test])
+
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
     setCurrentUser(userData);
-    setIsAuthenticated(true)
+    setIsAuthenticated(true);
   };
   const handleLogout = () => {
     if(localStorage.getItem("jwtToken")) {    //determine if there is a jwt token
@@ -75,22 +83,66 @@ function App() {
       setIsAuthenticated(false)     //set auth to false
     }
   }
+    if (localStorage.getItem("jwtToken")) {
+      //determine if there is a jwt token
+      localStorage.removeItem("jwtToken"); //remove if thre is a jwt
+      setCurrentUser(null); //set currentUser to null
+      setIsAuthenticated(false); //set auth to false
+    }
+  };
+
   return (
     <div className="App">
-      <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
-      <div className='container5'>
+      <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} />
+      <div className="container5">
         <Switch>
             {/* PUBLIC ROUTES */}
-          <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
-          <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
+          <Route path='/record/:video' render={(...routeProps) => {
+              return <Record {...routeProps} />
+          }} />
+
           <Route exact path='/' component={Welcome}/>
-          <Route path = '/user' component={User} />
-          {/* <Route path = '/video' component={Video} /> */}
-          <Route path = '/videos/:id' render={(routeProps) => {
-              return <Video {...routeProps} />
-          }}/>
-          <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
+          <Route exact path='/search/results' component={Results}/>
+          {/* PUBLIC ROUTES */}
+          <Route
+            path="/signup"
+            render={(props) => (
+              <Signup {...props} nowCurrentUser={nowCurrentUser} />
+            )}
+          />
+          <Route
+            path="/login"
+            render={(props) => (
+              <Login
+                {...props}
+                user={currentUser}
+                nowCurrentUser={nowCurrentUser}
+                setIsAuthenticated={setIsAuthenticated}
+              />
+            )}
+          />
+
+          <Route
+            path="/users/:id"
+            render={(routeProps) => {
+              return <User {...routeProps} />;
+            }}
+          />
+
+          <Route
+            path="/videos/:id"
+            render={(routeProps) => {
+              return <Video {...routeProps} />;
+            }}
+          />
+
+          <PrivateRoute
+            path="/profile"
+            component={Profile}
+            user={currentUser}
+            handleLogout={handleLogout}
+          />
         </Switch>
       </div>
       <Footer />
