@@ -29,19 +29,6 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [users, setUsers] = useState([])
-  const [videos, setVideos] = useState([])
-  const [test, setTest] = useState('')
-  const fetchAllUsers = async () => {
-      const resp = await fetch(CONNECTION_URI+"/api/users/all-users")
-      const respJSON = await resp.json()
-      setUsers(respJSON)
-      console.log('respJSON: ', respJSON)
-  }
-  const fetchAllVideos = async () => {
-    const resp = await fetch(CONNECTION_URI+"/api/videos/all-videos")
-    const respJSON = await resp.json()
-    setVideos(respJSON)
 }
   useEffect(() => {
     let token;
@@ -54,15 +41,7 @@ function App() {
       console.log("token", token);
       setAuthToken(token);
       setCurrentUser(token);
-      setTest('Hi')
     }
-    // fetchAllUsers()
-    console.log('users: ', users)
-    // fetchAllVideos()
-  }, []);
-//   useEffect(()=> {
-//       fetchAllUsers()
-//   }, [test])
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
     setCurrentUser(userData);
