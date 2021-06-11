@@ -5,8 +5,8 @@ const Welcome = () => {
     return (
         <div>
             <h1 className="welcomeText">Welcome</h1>
-            <img className="mic" src="https://i.pinimg.com/474x/61/09/36/61093605aca4cf910bc4eb65eaa8141f.jpg"/>
-            <h1>Welcome</h1>
+            <img className="mic" src="https://res.cloudinary.com/sei412-om/image/upload/v1623440005/mic_pmdu7o.png"/>
+            {/* <h1>Welcome</h1> */}
             <Search />
         </div>
     )

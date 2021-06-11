@@ -20,24 +20,27 @@ body {
 }
 
 @keyframes movingMic {
-  0%   {left:150px; top:0px;}
-  25%  {left:1050px; top:0px;}
+  0%  {left:1050px; top:325px;}
+  25%  {left:150px; top:325px;}
   50%  {left:1050px; top:325px;}
   75%  {left:150px; top:325px;}
-  100% {left:150px; top:0px;}
+  100% {left:1050px; top:325px;}
 }
 .mic {
   width: 100px;
   height: 100px;
   position: relative;
   animation-name: movingMic;
-  animation-duration: 12s;
+  animation-duration: 16s;
   animation-iteration-count: infinite;
 }
 .welcomeText {
   text-align: center;
   font-size: 50px;
-  color:rgba(0, 91, 209, 0.986);
+  font-weight: bold;
+  color:rgba(0, 99, 66, 0.986);
+  -webkit-text-stroke: 1px #282828;
+	text-shadow: 0px 4px 4px #282828;
 }
 .container5 {
   background-image: url("https://image.freepik.com/free-vector/cartoon-theater-stage-with-red-curtains_107791-1850.jpg");
@@ -46,4 +49,18 @@ body {
   background-attachment: fixed;
   width:100vw;
   height:80vh;
+}
+.searchDiv {
+  text-align: center;
+}
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.searchForm label {
+  color:white;
+}
+.searchForm input[type="submit"] {
+  margin-top: 30px;
 }

@@ -40,10 +40,6 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-<<<<<<< HEAD
-}
-=======
->>>>>>> d97ce671ec9cc6790b46b5fee75a2ab7d45bca76
   useEffect(() => {
     let token;
     //if there is token inside of local storage, then the user is not authenticated
@@ -56,10 +52,7 @@ function App() {
       setAuthToken(token);
       setCurrentUser(token);
     }
-<<<<<<< HEAD
-=======
   },[]);
->>>>>>> d97ce671ec9cc6790b46b5fee75a2ab7d45bca76
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
     setCurrentUser(userData);

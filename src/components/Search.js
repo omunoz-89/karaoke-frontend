@@ -21,8 +21,8 @@ const Search = (props) => {
     }, [results])
     
      if (results.length === 0) { return(
-        <div>
-            <form onSubmit={searchKaraoke}>
+        <div className="searchDiv">
+            <form className="searchForm" onSubmit={searchKaraoke}>
                 <label htmlFor="song">Song:</label>
                 <input type="text" name="song" required/>
                 <label htmlFor="artist">Artist:</label>
