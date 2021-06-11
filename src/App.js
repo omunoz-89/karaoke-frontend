@@ -13,6 +13,19 @@ import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import About from "./components/About";
+import User from "./components/User"
+import Video from "./components/Video"
+const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
+const KEY = process.env.API_KEY
+//Private route component
+const PrivateRoute = ({component: Component, ...rest}) => {
+  console.log('This is a private route')
+  let user = localStorage.getItem('jwtToken')
+  return <Route {...rest} render={ (props) => {
+    return user ? <Component {...rest} {...props} /> : <Redirect to='/login' />
+  }} />
+}
+
 import User from "./components/User";
 import Video from "./components/Video";
 import Results from "./components/Results";
@@ -41,9 +54,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function App() {
   // Set state values
-
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+
 
   useEffect(() => {
     let token;
@@ -57,15 +70,19 @@ function App() {
       setAuthToken(token);
       setCurrentUser(token);
     }
-  }, []);
 
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
     setCurrentUser(userData);
     setIsAuthenticated(true);
   };
-
   const handleLogout = () => {
+    if(localStorage.getItem("jwtToken")) {    //determine if there is a jwt token
+      localStorage.removeItem('jwtToken')    //remove if thre is a jwt
+      setCurrentUser(null);     //set currentUser to null
+      setIsAuthenticated(false)     //set auth to false
+    }
+  }
     if (localStorage.getItem("jwtToken")) {
       //determine if there is a jwt token
       localStorage.removeItem("jwtToken"); //remove if thre is a jwt
@@ -80,8 +97,6 @@ function App() {
       <div className="container5">
         <Switch>
             {/* PUBLIC ROUTES */}
-          <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
-          <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
           <Route path='/record/:video' render={(...routeProps) => {
               return <Record {...routeProps} />
@@ -107,23 +122,6 @@ function App() {
               />
             )}
           />
-          <Route path="/about" component={About} />
-          <Route path="/record" component={Record} />
-
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/search/results" component={Results} />
-
-          {/* PRIVATE ROUTES */}
-          <Route path = '/users/:id' render={(routeProps) => {
-                return <User {...routeProps} />
-          }}/>
-          
-
-          <Route path = '/videos/:id' render={(routeProps) => {
-              return <Video {...routeProps} />
-          }}/>
-
-          <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
 
           <Route
             path="/users/:id"
@@ -147,10 +145,8 @@ function App() {
           />
         </Switch>
       </div>
-
       <Footer />
     </div>
   );
 }
-
 export default App;
