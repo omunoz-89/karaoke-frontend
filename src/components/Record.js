@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 
 const Record = (props) => {
+
+    console.log(props)
     
     // useEffect(() => {
     //     const script = document.createElement('script');

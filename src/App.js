@@ -79,6 +79,16 @@ function App() {
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} />
       <div className="container5">
         <Switch>
+            {/* PUBLIC ROUTES */}
+          <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
+          <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
+          <Route path='/about' component={About} />
+          <Route path='/record/:video' render={(...routeProps) => {
+              return <Record {...routeProps} />
+          }} />
+
+          <Route exact path='/' component={Welcome}/>
+          <Route exact path='/search/results' component={Results}/>
           {/* PUBLIC ROUTES */}
           <Route
             path="/signup"
@@ -104,6 +114,17 @@ function App() {
           <Route exact path="/search/results" component={Results} />
 
           {/* PRIVATE ROUTES */}
+          <Route path = '/users/:id' render={(routeProps) => {
+                return <User {...routeProps} />
+          }}/>
+          
+
+          <Route path = '/videos/:id' render={(routeProps) => {
+              return <Video {...routeProps} />
+          }}/>
+
+          <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
+
           <Route
             path="/users/:id"
             render={(routeProps) => {
