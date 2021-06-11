@@ -51,7 +51,6 @@ function App() {
       console.log("token", token);
       setAuthToken(token);
       setCurrentUser(token);
-      setTest('Hi')
     }
   }, []);
 
@@ -81,7 +80,9 @@ function App() {
           <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
           <Route path='/login' render={(props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path='/about' component={About} />
-          <Route path='/record' component={Record} />
+          <Route path='/record/:video' render={(...routeProps) => {
+              return <Record {...routeProps} />
+          }} />
 
           <Route exact path='/' component={Welcome}/>
           <Route exact path='/search/results' component={Results}/>
@@ -89,7 +90,7 @@ function App() {
           
           {/* PRIVATE ROUTES */}
           <Route path = '/users/:id' render={(routeProps) => {
-                return <User {...routeProps} user={user} reload={fetchAllUsers} />
+                return <User {...routeProps} />
           }}/>
           
 
