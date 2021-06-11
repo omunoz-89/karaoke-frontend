@@ -17,6 +17,7 @@ import User from "./components/User";
 import Video from "./components/Video";
 import Results from "./components/Results";
 import Record from "./components/Record";
+import Trending from "./components/Trending";
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL;
 const KEY = process.env.API_KEY;
 //Private route component
@@ -103,6 +104,12 @@ function App() {
             path="/users/:id"
             render={(routeProps) => {
               return <User {...routeProps} />;
+            }}
+          />
+          <Route
+            exact path="/videos/trending"
+            render={(routeProps) => {
+              return <Trending {...routeProps} />;
             }}
           />
           <Route
