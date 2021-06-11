@@ -7,3 +7,16 @@ body {
 .logout-link {
   cursor: pointer;
 }
+
+.cardImg {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card{
+  border: 0px;
+}
