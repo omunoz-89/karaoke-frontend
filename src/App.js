@@ -15,8 +15,13 @@ import Login from "./components/Login";
 import About from "./components/About";
 import User from "./components/User"
 import Video from "./components/Video"
+import Results from "./components/Results";
+import Record from "./components/Record";
+
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
 const KEY = process.env.API_KEY
+
+
 //Private route component
 const PrivateRoute = ({component: Component, ...rest}) => {
   console.log('This is a private route')
@@ -25,32 +30,6 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     return user ? <Component {...rest} {...props} /> : <Redirect to='/login' />
   }} />
 }
-
-import User from "./components/User";
-import Video from "./components/Video";
-import Results from "./components/Results";
-import Record from "./components/Record";
-
-const CONNECTION_URI = process.env.REACT_APP_SERVER_URL;
-const KEY = process.env.API_KEY;
-
-//Private route component
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log("This is a private route");
-  let user = localStorage.getItem("jwtToken");
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return user ? (
-          <Component {...rest} {...props} />
-        ) : (
-          <Redirect to="/login" />
-        );
-      }}
-    />
-  );
-};
 
 function App() {
   // Set state values
@@ -69,7 +48,8 @@ function App() {
       console.log("token", token);
       setAuthToken(token);
       setCurrentUser(token);
-    }
+    }}, [])
+
 
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
@@ -81,13 +61,6 @@ function App() {
       localStorage.removeItem('jwtToken')    //remove if thre is a jwt
       setCurrentUser(null);     //set currentUser to null
       setIsAuthenticated(false)     //set auth to false
-    }
-  }
-    if (localStorage.getItem("jwtToken")) {
-      //determine if there is a jwt token
-      localStorage.removeItem("jwtToken"); //remove if thre is a jwt
-      setCurrentUser(null); //set currentUser to null
-      setIsAuthenticated(false); //set auth to false
     }
   };
 
@@ -147,6 +120,7 @@ function App() {
       </div>
       <Footer />
     </div>
-  );
+  )
 }
+
 export default App;

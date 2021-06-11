@@ -11,7 +11,7 @@ const Search = (props) => {
         e.preventDefault()
         const song = e.target.song.value
         const artist = e.target.artist.value
-        const ytResults = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=25&order=relevance&q=${song}%20${artist}%20karaoke&key=${KEY}`)
+        const ytResults = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=25&order=relevance&videoEmbeddable=true&type=video&q=${song}%20${artist}%20karaoke&key=${KEY}`)
         setResults(ytResults)
         // if (ytResults) return <Redirect to='/search/results' results={results} />
     }
