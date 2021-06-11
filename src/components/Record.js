@@ -14,6 +14,7 @@ const Record = (props) => {
     const url = `${REACT_APP_SERVER_URL}/api/videos`;
     try {
       const response = await axios.post(url, data);
+      console.log("******************************");
       console.log(response.data);
     } catch (err) {
       console.log(err);
