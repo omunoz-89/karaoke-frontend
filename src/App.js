@@ -15,10 +15,8 @@ import Login from "./components/Login";
 import About from "./components/About";
 import User from "./components/User"
 import Video from "./components/Video"
-
 const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
 const KEY = process.env.API_KEY
-
 //Private route component
 const PrivateRoute = ({component: Component, ...rest}) => {
   console.log('This is a private route')
@@ -27,35 +25,24 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     return user ? <Component {...rest} {...props} /> : <Redirect to='/login' />
   }} />
 }
-
-
 function App() {
   // Set state values
-
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-<<<<<<< HEAD
-
-  
-=======
   const [users, setUsers] = useState([])
   const [videos, setVideos] = useState([])
   const [test, setTest] = useState('')
-
   const fetchAllUsers = async () => {
       const resp = await fetch(CONNECTION_URI+"/api/users/all-users")
       const respJSON = await resp.json()
       setUsers(respJSON)
       console.log('respJSON: ', respJSON)
   }
- 
   const fetchAllVideos = async () => {
     const resp = await fetch(CONNECTION_URI+"/api/videos/all-videos")
     const respJSON = await resp.json()
     setVideos(respJSON)
 }
-
->>>>>>> 7db179e1689a6a6a1db8aeb534450085975fbbe9
   useEffect(() => {
     let token;
     //if there is token inside of local storage, then the user is not authenticated
@@ -69,31 +56,25 @@ function App() {
       setCurrentUser(token);
       setTest('Hi')
     }
-
     // fetchAllUsers()
     console.log('users: ', users)
     // fetchAllVideos()
   }, []);
-
 //   useEffect(()=> {
 //       fetchAllUsers()
 //   }, [test])
-  
   const nowCurrentUser = (userData) => {
     console.log("--- inside nowCurrentUser ---");
     setCurrentUser(userData);
     setIsAuthenticated(true)
   };
-
   const handleLogout = () => {
-
     if(localStorage.getItem("jwtToken")) {    //determine if there is a jwt token
       localStorage.removeItem('jwtToken')    //remove if thre is a jwt
       setCurrentUser(null);     //set currentUser to null
       setIsAuthenticated(false)     //set auth to false
     }
   }
-
   return (
     <div className="App">
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
@@ -109,15 +90,11 @@ function App() {
           <Route path = '/videos/:id' render={(routeProps) => {
               return <Video {...routeProps} />
           }}/>
-
           <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
-
         </Switch>
       </div>
-
       <Footer />
     </div>
   );
 }
-
 export default App;
