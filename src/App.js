@@ -34,6 +34,10 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+<<<<<<< HEAD
+
+  
+=======
   const [users, setUsers] = useState([])
   const [videos, setVideos] = useState([])
   const [test, setTest] = useState('')
@@ -51,6 +55,7 @@ function App() {
     setVideos(respJSON)
 }
 
+>>>>>>> 7db179e1689a6a6a1db8aeb534450085975fbbe9
   useEffect(() => {
     let token;
     //if there is token inside of local storage, then the user is not authenticated
@@ -92,7 +97,7 @@ function App() {
   return (
     <div className="App">
       <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} /> 
-      <div className='container mt-5'>
+      <div className='container5'>
         <Switch>
             {/* PUBLIC ROUTES */}
           <Route path='/signup' render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} /> } />
