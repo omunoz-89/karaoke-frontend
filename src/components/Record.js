@@ -1,22 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import VideoPlayer from "./VideoPlayer";
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Record = (props) => {
   const ytURL = props[0].match.params.video;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { title, description };
-    const response = await axios.post(
-      `${REACT_APP_SERVER_URL}/api/videos`,
-      data
-    );
-    console.log(response.data);
+    const url = `${REACT_APP_SERVER_URL}/api/videos`;
+    try {
+      const response = await axios.post(url, data);
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
