@@ -48,7 +48,10 @@ const Video = (props) => {
            <h1> Video Page </h1>
             <p>{video.description}</p>
             {/* <ul>{allComments}</ul> */}
+       
             </div>
+
+
 
     )
 }
