@@ -24,11 +24,18 @@ MongoDB with Mongoose
 
 ## User Stories
 
+You don't have to love Cher to love Cheraoke (but you'd be a lot cooler if you did). This app is designed to give everyone the chance to shine behind the mic. If you like to sing, this is the app for you!
+
+- As a user, I want to...
+  - be able to search for karaoke verisons of my favorite tunes.
+  - record myself singing along.
+  - access my recordings whenever I log into Cheraoke.
+
 ## Routes, Component Structure, and Models
 
 - **Routes**
 
-* **Models**
+- **Models**
 
 ## Code Excerpts
 
@@ -45,3 +52,9 @@ If you'd like to set this project up on your own local server:
 ## Known Issues
 
 ## Next Steps
+
+Music is a social experience, and the next iterations of Cheraoke will embrace this. Here are just a few of the many plans we have for future versions of this app:
+
+- We intend to build in the ability to follow other users.
+- Allow different people to sing and/or comment in real-time using Firebase to synchronize events across clients.
+- Enable users to upload portfolio pics.
