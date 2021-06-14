@@ -18,8 +18,8 @@ body {
 }
 
 a {
-  color:white;
-  text-decoration-color: none;
+  /* color:white; */
+  /* text-decoration-color: none; */
 }
 
 @keyframes movingMic {
@@ -50,7 +50,7 @@ a {
   height:80%;
   animation-name: movingMic;
 }
-.mic {
+/* .mic {
   width: 100px;
   height: 100px;
   position: relative;
@@ -58,7 +58,7 @@ a {
   animation-duration: 16s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-}
+} */
 .welcomeText {
   text-align: center;
   font-size: 50px;
@@ -67,7 +67,23 @@ a {
   -webkit-text-stroke: 1px #282828;
 	text-shadow: 0px 4px 4px #282828;
 }
-
+.welcomeVid {
+  display:flex;
+  justify-content: space-evenly;
+}
+.introText {
+  text-align: center;
+  font-size:20px;
+  color:lavender;
+}
+.searchResultsText {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color:rgba(0, 99, 66, 0.986);
+  -webkit-text-stroke: 1px #282828;
+	text-shadow: 0px 4px 4px #282828;
+}
 .searchDiv {
   text-align: center;
 }
