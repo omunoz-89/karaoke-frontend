@@ -103,7 +103,7 @@ function App() {
           <Route
             path="/users/:id"
             render={(routeProps) => {
-              return <User {...routeProps} />;
+              return <User {...routeProps} isAuth={isAuthenticated} user={currentUser}/>;
             }}
           />
           <Route
