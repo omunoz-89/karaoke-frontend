@@ -2,9 +2,9 @@ import React from "react";
 
 const About = () => {
   return (
-    <div>
-      <h1>About</h1>
-      <p>
+    <div className="aboutDiv">
+      <h1 className="aboutTag">About</h1>
+      <p className="aboutText">
         Unlock your inner karaoke superstar with Cheraoke! Log in and search for
         a song you'd like to sing. Once you select the karaoke version you want,
         you'll be taken to the record page where you can record and then upload
@@ -13,8 +13,8 @@ const About = () => {
         if you did...
       </p>
       <iframe
-        width="100%"
-        height="480"
+        width="50%"
+        height="350"
         src="https://www.youtube.com/embed/GgD9FyE60hs?t=6"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

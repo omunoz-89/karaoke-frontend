@@ -13,7 +13,7 @@ const Profile = (props) => {
     alert("Session has ended. Please login again.");
   }
   const userData = props.user ? (
-    <div>
+    <div className="profileDiv">
       <h1>Profile</h1>
       <p>
         <strong>Name:</strong> {name}
@@ -25,8 +25,8 @@ const Profile = (props) => {
         <strong>ID:</strong> {id}
       </p>
       <iframe
-        width="100%"
-        height="480"
+        width="50%"
+        height="335"
         src="https://www.youtube.com/embed/zLt8lUBEPnM"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

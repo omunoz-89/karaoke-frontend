@@ -4,12 +4,8 @@ const Video = (props) => {
   const [video, setVideo] = useState({});
   const [comments, setComments] = useState([]);
   const [commentList, setCommentList] = useState();
-
-  // const commentList = this.comments.map((item,idx) => {
-  //     return <li key={idx}>{item}</li>
-  // })
-
   const CONNECTION_URI = process.env.REACT_APP_SERVER_URL;
+
   const fetchVideo = async () => {
     const resp = await fetch(
       CONNECTION_URI + `/api/videos/${props.match.params.id}`
@@ -18,27 +14,20 @@ const Video = (props) => {
     setVideo(respJSON);
     setComments(respJSON.comments);
     const commentList = await respJSON.comments.map((c, idx) => {
-      setCommentList(
+      return (
         <div key={idx}>
           <hr />
           <p>{c.content}</p>
           <p>Likes: {c.likes}</p>
-          <hr />
         </div>
       );
     });
-  };
-
-  const fetchComments = async () => {
-    // setComments(video.comments)
+    setCommentList(commentList);
   };
 
   useEffect(() => {
     fetchVideo();
-    console.log("In fetch video");
   }, []);
-
-  console.log(comments);
 
   return (
     <div>

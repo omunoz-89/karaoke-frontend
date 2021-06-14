@@ -7,7 +7,7 @@ const Results = (props) => {
   const resultsList = results.map((r, idx) => {
     return (
       <div className="col">
-        <div key={idx} class="card">
+        <div key={idx} className="card">
         <Link
               to={`/record/${r.id.videoId}`}
               params={{ video: r.id.videoId }}
@@ -30,7 +30,7 @@ const Results = (props) => {
 
   return (
     <div>
-      <h1 className="searchResultsText">Search Results</h1>
+      <h2>Search Results</h2>
       <div className="container">
         <div className="row">{resultsList}</div>;
       </div>
