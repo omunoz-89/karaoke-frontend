@@ -15,8 +15,8 @@ const Record = (props) => {
   // }
 
   return (
-    <div>
-      <div>
+    <div className="videoDiv">
+      <div className="video">
         <VideoPlayer ytURL={ytURL} />
       </div>
       <div>
