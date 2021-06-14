@@ -69,7 +69,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} />
+      <Navbar isAuth={isAuthenticated} handleLogout={handleLogout} user={currentUser}/>
       <div className="container5">
         <Switch>
           {/* PUBLIC ROUTES */}
@@ -128,6 +128,6 @@ function App() {
       </div>
       <Footer />
     </div>
-  );
+  )
 }
 export default App;

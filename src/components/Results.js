@@ -1,25 +1,41 @@
-import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Results = (props) => {
-    
-    console.log(props)
-    let results = props.results.data.items
-    const resultsList = results.map((r, idx) => {
-       return <div className="resultsDiv">
-        <Link to= {`/record/${r.id.videoId}`} params={{ video: r.id.videoId }}>
-           <img src={r.snippet.thumbnails.medium.url} alt={r.snippet.title} />
-       <h5 key={idx}>{r.snippet.title}</h5>
-       </Link>
-       <hr />
-       </div>
-    })
-
-    return(
-        <div>
-            {resultsList}
+  console.log(props);
+  let results = props.results.data.items;
+  const resultsList = results.map((r, idx) => {
+    return (
+      <div className="col">
+        <div key={idx} class="card">
+        <Link
+              to={`/record/${r.id.videoId}`}
+              params={{ video: r.id.videoId }}
+            >
+          <img
+            className="cardImg"
+            src={r.snippet.thumbnails.medium.url}
+            alt={r.snippet.title}
+          />
+          <div className="card-body">
+            <h5 className="card-title">{r.snippet.title}</h5>
+            
+          </div>
+          </Link>
         </div>
-    )
-}
+        <hr />
+      </div>
+    );
+  });
 
-export default Results
+  return (
+    <div>
+      <h1>Search Results</h1>
+      <div className="container">
+        <div className="row">{resultsList}</div>;
+      </div>
+    </div>
+  );
+};
+
+export default Results;

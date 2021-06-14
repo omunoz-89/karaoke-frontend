@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Cheraoke
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[APP ADDRESS]
 
-## Available Scripts
+Unlock your inner karaoke superstar with Cheraoke! Log in and search for a song you'd like to sing. Once you select the karaoke version you want, you'll be taken to the record page where you can record and then upload your new hit! Don't like what you did? Simply turn back time and try again. You don't have to sing a song by Cher, but are you really living life to the fullest if you don't?
 
-In the project directory, you can run:
+[SCREEN SHOTS]
 
-### `yarn start`
+# Techonologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a MERN project with the following highlights:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Passport / Bcrypt for authentication and password hashing
+- YouTube API
+- Cameratag
 
-### `yarn test`
+## User Stories
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You don't have to love Cher to love Cheraoke (but you'd be a lot cooler if you did). This app is designed to give everyone the chance to shine behind the mic. If you like to sing, this is the app for you!
 
-### `yarn build`
+- As a user, I want to...
+  - be able to search for karaoke verisons of my favorite tunes.
+  - record myself singing along.
+  - access my recordings whenever I log into Cheraoke.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Routes and Models
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Routes**
+  [EDIT]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Models**
+  - User
+    - Purpose: store signed-up user information
+    - Fields: name, email, password, profilePic [EDIT]
+  - Video
+    - Purpose: store all video data for signed-up users
+    - Fields: url, title, description, likes, comments, public, thumbnail [EDIT]
+  - Comment
+    - Purpose: store all comment data for videos
+    - Fields: content, likes [EDIT]
 
-### `yarn eject`
+## Code Excerpts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[EDIT]
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Steps to Setting Up
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you'd like to set this project up on your own local server:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Fork and clone the repositories for front end and back end.
+- Run `npm install` in each to install dependencies.
+- Create .env file in each. The front end should include
+  - REACT_APP_SERVER_URL=http://localhost:8000
+  - REACT_APP_API_KEY=<your YouTube API key>
+    The back end should include:
+  - JWT_SECRET <you provide>
+  - MONGO_URI=mongodb://localhost/karaoke
+- Review database setup and check mongoDB to confirm data
 
-## Learn More
+## Next Steps
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Music is a social experience, and the next iterations of Cheraoke will embrace this. Here are just a few of the many plans we have for future versions of this app:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Build in the ability to follow other users.
+- Allow different people to sing and/or comment in real-time using Firebase to synchronize events across clients.
+- Enable users to upload portfolio pics.
+- Allow users to make their profiles public, followers-only, or fully private.
+- Enable filters on video.
