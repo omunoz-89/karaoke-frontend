@@ -1,7 +1,8 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 const Navbar = (props) => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
             <div className="container">
@@ -17,7 +18,9 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link"  to="/about">About</NavLink>
                         </li>
-                        
+                        <li className="nav-item">
+                            <NavLink className="nav-link"  to="/videos/trending">Trending</NavLink>
+                        </li>
                     </ul>
                     {
                         props.isAuth 

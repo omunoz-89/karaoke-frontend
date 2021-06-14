@@ -1,7 +1,7 @@
 import React from "react";
 import VideoPlayer from "./VideoPlayer";
 
-const ytURL = "GgD9FyE60hs?t=6";
+// const ytURL = "GgD9FyE60hs?t=6";
 
 const About = () => {
   return (
@@ -15,7 +15,16 @@ const About = () => {
         again. You don't have to sing a song by Cher, but you'd be a lot cooler
         if you did...
       </p>
-      <VideoPlayer ytURL={ytURL} />
+      <iframe
+        width="100%"
+        height="480"
+        src="https://www.youtube.com/embed/GgD9FyE60hs?t=6"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title="Embedded video"
+      />
+      {/* <VideoPlayer ytURL={ytURL} /> */}
     </div>
   );
 };

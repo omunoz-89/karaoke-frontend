@@ -14,9 +14,9 @@ const Record = (props) => {
     e.preventDefault();
     const mp4Link = e.target.elements.myCamera_mp4.value
     const thumbLink = e.target.elements.myCamera_thumb.value
-
-    console.log('form submit')
-    const data = { title, description, url: mp4Link, thumbnail: thumbLink  };
+    const thisUserId = e.target.elements.userId.value
+    const thisPublic = e.target.elements.public.value
+    const data = { title, description, url: mp4Link, thumbnail: thumbLink, userId: thisUserId, public: thisPublic };
     console.log(data)
     const url = `${REACT_APP_SERVER_URL}/api/videos`;
     try {
@@ -27,10 +27,10 @@ const Record = (props) => {
       console.log(err);
     }
   };
-  console.log(props)
+  console.log(props.user)
 
   return (
-    <div>
+    <div className="videoDiv">
       <div>
         <h1>Recording Page</h1>
         <h3>Prepare To Be Amaaaaazing!</h3>
@@ -51,8 +51,6 @@ const Record = (props) => {
         data-autopreview='true'>
         </camera>
 
-          <div>
-          </div>
           <h3>Please tell us about your track.</h3>
           <label>Title</label>
           <input
@@ -68,6 +66,11 @@ const Record = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <input type="hidden" name="userId" value={props.user.id} />
+            <label htmlFor="public">Public:</label>
+            <input type="radio" name="public" value={true} />
+            <label htmlFor="private">Private:</label>
+            <input type="radio" name="public" value={false} />
           <input type="submit" value="Submit" />
           <VideoPlayer ytURL={ytURL} />
         </form>
