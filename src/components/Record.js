@@ -7,8 +7,8 @@ const Record = (props) => {
   const ytURL = props[0].match.params.video;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
+  // const [, updateState] = React.useState();
+  // const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
