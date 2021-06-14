@@ -18,19 +18,8 @@ const Welcome = () => {
         className="mic"
         src="https://res.cloudinary.com/sei412-om/image/upload/v1623440005/mic_pmdu7o.png"
       /> */}
-      <div className="welcomeVid">
-        <iframe
-          width="40%"
-          height="350"
-          src="https://www.youtube.com/embed/ubTIBlx4xTw"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="Embedded video"
-        />
-        <Search />
-      {/* <VideoPlayer ytURL={ytURL} /> */}
-      </div>
+
+      <Search />
     </div>
   );
 };
