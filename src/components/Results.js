@@ -30,7 +30,7 @@ const Results = (props) => {
 
   return (
     <div>
-      <h1 className="searchResultsText">Search Results</h1>
+      <h2>Search Results</h2>
       <div className="container">
         <div className="row">{resultsList}</div>;
       </div>
