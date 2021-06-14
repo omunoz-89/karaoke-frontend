@@ -5,7 +5,7 @@ import VideoPlayer from "./VideoPlayer";
 const Welcome = () => {
   // const ytURL = "ubTIBlx4xTw?t=23";
   return (
-    <div>
+    <div className="welcomeVid">
       <h1 className="welcomeText">
         Welcome to Cheraoke, you beautiful person you!
       </h1>

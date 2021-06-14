@@ -27,7 +27,7 @@ const Record = (props) => {
     <div className="videoDiv">
       <div>
         <h1>Recording Page</h1>
-        <h3>Prepare To Be Amaaaaazing!</h3>
+        <h2>Prepare To Be Amaaaaazing!</h2>
         <p>
           Cue the karaoke track to where you'd like to start singing, hit
           record, wait for the countdown, then release your inner Cheraoke
