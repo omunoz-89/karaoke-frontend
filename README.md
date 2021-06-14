@@ -8,19 +8,11 @@ Unlock your inner karaoke superstar with Cheraoke! Log in and search for a song 
 
 # Techonologies Used
 
-This is a MERN project with the following highlights: [option A]
+This is a MERN project with the following highlights:
 
-[option B]
-
-- Node/Express
-  - Key modules:
-    - Passport / Bcrypt for authentication and password hashing
-  - APIs:
-    - youtube, etc [finish]
-- React
-  - Key modules:
-
-MongoDB with Mongoose
+- Passport / Bcrypt for authentication and password hashing
+- YouTube API
+- Cameratag
 
 ## User Stories
 
@@ -31,30 +23,46 @@ You don't have to love Cher to love Cheraoke (but you'd be a lot cooler if you d
   - record myself singing along.
   - access my recordings whenever I log into Cheraoke.
 
-## Routes, Component Structure, and Models
+## Routes and Models
 
 - **Routes**
+  [EDIT]
 
 - **Models**
+  - User
+    - Purpose: store signed-up user information
+    - Fields: name, email, password, profilePic [EDIT]
+  - Video
+    - Purpose: store all video data for signed-up users
+    - Fields: url, title, description, likes, comments, public, thumbnail [EDIT]
+  - Comment
+    - Purpose: store all comment data for videos
+    - Fields: content, likes [EDIT]
 
 ## Code Excerpts
 
-## Steps to Setting Up [FINISH]
+[EDIT]
+
+## Steps to Setting Up
 
 If you'd like to set this project up on your own local server:
 
-- Fork and clone this repository
-- Run `npm install` to install dependencies in both client and main project folder
-- Create .env file, which will need to include:
-  - `JWT_SECRET` (you determine this for user token creation)
+- Fork and clone the repositories for front end and back end.
+- Run `npm install` in each to install dependencies.
+- Create .env file in each. The front end should include
+  - REACT_APP_SERVER_URL=http://localhost:8000
+  - REACT_APP_API_KEY=<your YouTube API key>
+    The back end should include:
+  - JWT_SECRET <you provide>
+  - MONGO_URI=mongodb://localhost/karaoke
 - Review database setup and check mongoDB to confirm data
-
-## Known Issues
 
 ## Next Steps
 
 Music is a social experience, and the next iterations of Cheraoke will embrace this. Here are just a few of the many plans we have for future versions of this app:
 
-- We intend to build in the ability to follow other users.
+- Build in the ability to follow other users.
 - Allow different people to sing and/or comment in real-time using Firebase to synchronize events across clients.
 - Enable users to upload portfolio pics.
+- Allow users to make their profiles public, followers-only, or fully private.
+- Enable filters on video.
