@@ -34,14 +34,14 @@ const Record = (props) => {
       <div>
         <h1>Recording Page</h1>
         <h2>Prepare To Be Amaaaaazing!</h2>
-        <p>
+        <p className="whiteText">
           Cue the karaoke track to where you'd like to start singing, hit
           record, wait for the countdown, then release your inner Cheraoke
           spirit!
         </p>
       </div>
       <div>
-        <form action="/api/videos/" method="POST" onSubmit={handleSubmit}>
+        <form className="recordForm" action="/api/videos/" method="POST" onSubmit={handleSubmit}>
         <camera 
         is='custom' 
         data-app-id='a-1433fe10-ac5b-0139-42d3-0aac5b511429' 
@@ -51,7 +51,7 @@ const Record = (props) => {
         data-autopreview='true'>
         </camera>
 
-          <h3>Please tell us about your track.</h3>
+          <h2>Please tell us about your track.</h2>
           <label>Title</label>
           <input
             type="text"
