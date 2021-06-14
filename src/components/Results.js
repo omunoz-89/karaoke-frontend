@@ -8,6 +8,10 @@ const Results = (props) => {
     return (
       <div className="col">
         <div key={idx} class="card">
+        <Link
+              to={`/record/${r.id.videoId}`}
+              params={{ video: r.id.videoId }}
+            >
           <img
             className="cardImg"
             src={r.snippet.thumbnails.medium.url}
@@ -15,11 +19,9 @@ const Results = (props) => {
           />
           <div className="card-body">
             <h5 className="card-title">{r.snippet.title}</h5>
-            <Link
-              to={`/record/${r.id.videoId}`}
-              params={{ video: r.id.videoId }}
-            ></Link>
+            
           </div>
+          </Link>
         </div>
         <hr />
       </div>
