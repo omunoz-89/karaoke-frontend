@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 
 const User = (props) => {
@@ -37,6 +38,14 @@ const User = (props) => {
         fetchUser()
     }, [])
 
+    const deleteVideo = async (e) => {
+      e.preventDefault();
+      console.log('Deleted MF')
+      console.log(e.target.delete.value)
+      const videoId = e.target.delete.value
+      const findAndDelete = await axios.delete(CONNECTION_URI+`/api/videos/${videoId}`);
+
+    }
     return(
         <div>
         <h1>User Page</h1>
