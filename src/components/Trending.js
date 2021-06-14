@@ -41,7 +41,7 @@ const Trending = (props) => {
 
   return (
     <div>
-      <h1>Trending</h1>
+      <h1 className="trendingTag">Trending</h1>
       <div className="container">
         <div className="row">{array}</div>
       </div>
