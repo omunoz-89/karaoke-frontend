@@ -22,7 +22,7 @@ const Trending = (props) => {
       const videoList = videos.map((vid, idx) => {
         return (
           <div className="col">
-            <div key={idx} class="card">
+            <div key={idx} className="card">
             <img className='cardImg' src={vid.thumbnail} alt={vid.title} />
               <div className="card-body">
                 <h6 className="card-title">{vid.title}</h6>
