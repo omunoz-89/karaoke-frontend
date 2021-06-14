@@ -7,6 +7,8 @@ const Record = (props) => {
   const ytURL = props[0].match.params.video;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ const Record = (props) => {
     const url = `${REACT_APP_SERVER_URL}/api/videos`;
     try {
       const response = await axios.post(url, data);
+      console.log("******************************");
       console.log(response.data);
     } catch (err) {
       console.log(err);
@@ -25,10 +28,11 @@ const Record = (props) => {
       <div>
         <h1>Recording Page</h1>
         <h3>Prepare To Be Amaaaaazing!</h3>
-      </div>
-
-      <div>
-        <VideoPlayer ytURL={ytURL} />
+        <p>
+          Cue the karaoke track to where you'd like to start singing, hit
+          record, wait for the countdown, then release your inner Cheraoke
+          spirit!
+        </p>
       </div>
       <div>
         <form action="/api/videos/" method="POST" onSubmit={handleSubmit}>
@@ -37,6 +41,10 @@ const Record = (props) => {
             id="myCamera"
             data-maxlength="420"
           ></camera>
+          <div>
+            <VideoPlayer ytURL={ytURL} />
+          </div>
+          <h3>Please tell us about your track.</h3>
           <label>Title</label>
           <input
             type="text"
