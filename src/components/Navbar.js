@@ -17,6 +17,9 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link"  to="/about">About</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link"  to={`/users/${props.user.id}`}>My Videos</NavLink>
+                        </li>
                     </ul>
                     {
                         props.isAuth 
