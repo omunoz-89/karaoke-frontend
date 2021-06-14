@@ -6,7 +6,6 @@ const User = (props) => {
     const [user, setUser] = useState()
     const [videos, setVideos] = useState()
     const [videoList, setVideoList] = useState()
-
     const CONNECTION_URI = process.env.REACT_APP_SERVER_URL
 
     const fetchUser = async () => {
@@ -14,6 +13,9 @@ const User = (props) => {
         const respJSON = await resp.json()
         setUser(respJSON)
         setVideos(respJSON.videos)
+        if(videos === null){
+            setVideoList('You have no recorded videos')
+        } else {
         const videoList = await respJSON.videos.map((vid, idx) => {
             setVideoList(
                 <div className="col-3">
@@ -27,13 +29,13 @@ const User = (props) => {
             </div>
           </div>
                 )
+            
         })
+    }
     }
     useEffect(()=> {
         fetchUser()
     }, [])
-
-    console.log(window.location)
 
     return(
         <div>
