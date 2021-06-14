@@ -24,7 +24,7 @@ const Record = (props) => {
   };
 
   return (
-    <div>
+    <div className="videoDiv">
       <div>
         <h1>Recording Page</h1>
         <h3>Prepare To Be Amaaaaazing!</h3>
@@ -41,7 +41,7 @@ const Record = (props) => {
             id="myCamera"
             data-maxlength="420"
           ></camera>
-          <div>
+          <div className="video">
             <VideoPlayer ytURL={ytURL} />
           </div>
           <h3>Please tell us about your track.</h3>
