@@ -3,7 +3,7 @@ import Search from "./Search";
 import VideoPlayer from "./VideoPlayer";
 
 const Welcome = () => {
-  const ytURL = "ubTIBlx4xTw?t=23";
+  // const ytURL = "ubTIBlx4xTw?t=23";
   return (
     <div>
       <h1 className="welcomeText">
@@ -18,8 +18,17 @@ const Welcome = () => {
         some inspiration? Unmute the video and bask in the musical muse. We
         believe in you!
       </p>
+      <iframe
+        width="100%"
+        height="480"
+        src="https://www.youtube.com/embed/ubTIBlx4xTw"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title="Embedded video"
+      />
       <Search />
-      <VideoPlayer ytURL={ytURL} />
+      {/* <VideoPlayer ytURL={ytURL} /> */}
     </div>
   );
 };
