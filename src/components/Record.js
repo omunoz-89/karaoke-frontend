@@ -12,7 +12,12 @@ const Record = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { title, description };
+    const mp4Link = e.target.elements.myCamera_mp4.value
+    const thumbLink = e.target.elements.myCamera_thumb.value
+
+    console.log('form submit')
+    const data = { title, description, url: mp4Link, thumbnail: thumbLink  };
+    console.log(data)
     const url = `${REACT_APP_SERVER_URL}/api/videos`;
     try {
       const response = await axios.post(url, data);
@@ -22,6 +27,7 @@ const Record = (props) => {
       console.log(err);
     }
   };
+  console.log(props)
 
   return (
     <div>
@@ -36,13 +42,16 @@ const Record = (props) => {
       </div>
       <div>
         <form action="/api/videos/" method="POST" onSubmit={handleSubmit}>
-          <camera
-            data-app-id="a-1433fe10-ac5b-0139-42d3-0aac5b511429"
-            id="myCamera"
-            data-maxlength="420"
-          ></camera>
+        <camera 
+        is='custom' 
+        data-app-id='a-1433fe10-ac5b-0139-42d3-0aac5b511429' 
+        id='myCamera' 
+        data-name='karaoke' 
+        data-maxlength='420' 
+        data-autopreview='true'>
+        </camera>
+
           <div>
-            <VideoPlayer ytURL={ytURL} />
           </div>
           <h3>Please tell us about your track.</h3>
           <label>Title</label>
@@ -59,7 +68,8 @@ const Record = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button type="submit">Submit</button>
+          <input type="submit" value="Submit" />
+          <VideoPlayer ytURL={ytURL} />
         </form>
       </div>
     </div>
