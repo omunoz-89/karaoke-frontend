@@ -77,7 +77,7 @@ function App() {
           <Route
             path="/record/:video"
             render={(...routeProps) => {
-              return <Record {...routeProps} />;
+              return <Record {...routeProps} user={currentUser} />;
             }}
           />
           <Route exact path="/" component={Welcome} />
