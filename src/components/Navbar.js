@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = (props) => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
             <div className="container">
@@ -18,7 +19,7 @@ const Navbar = (props) => {
                             <NavLink className="nav-link"  to="/about">About</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link"  to={`/users/${props.user.id}`}>My Videos</NavLink>
+                            <NavLink className="nav-link"  to="/videos/trending">Trending</NavLink>
                         </li>
                     </ul>
                     {
@@ -27,6 +28,9 @@ const Navbar = (props) => {
                             <li className="nav-item">
                                 <NavLink className="nav-link"  to="/profile">Profile</NavLink>
                             </li>
+                            <li className="nav-item">
+                            <NavLink className="nav-link"  to={`/users/${props.user.id}`}>My Videos</NavLink>
+                        </li>
                             <li className="nav-item">
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
                             </li>
