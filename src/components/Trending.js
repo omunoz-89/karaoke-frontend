@@ -21,8 +21,8 @@ const Trending = (props) => {
     } else {
       const videoList = videos.map((vid, idx) => {
         return (
-          <div className="col">
-            <div key={idx} className="card">
+          <div className="row">
+            <div key={idx} className="card col-4">
             <a href={window.location.origin+`/videos/${vid._id}`}><img className='cardImg' src={vid.thumbnail} alt={vid.title} /></a>
               <div className="card-body">
                 <h6 className="card-title">{vid.title}</h6>
