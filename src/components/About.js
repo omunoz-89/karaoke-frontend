@@ -1,7 +1,4 @@
 import React from "react";
-import VideoPlayer from "./VideoPlayer";
-
-// const ytURL = "GgD9FyE60hs?t=6";
 
 const About = () => {
   return (
@@ -24,7 +21,6 @@ const About = () => {
         allowFullScreen
         title="Embedded video"
       />
-      {/* <VideoPlayer ytURL={ytURL} /> */}
     </div>
   );
 };

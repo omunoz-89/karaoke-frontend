@@ -17,8 +17,8 @@ const Video = (props) => {
       return (
         <div key={idx}>
           <hr />
-          <p>{c.content}</p>
-          <p>Likes: {c.likes}</p>
+          <p className="whiteText">{c.content}</p>
+          <p className="whiteText">Likes: {c.likes}</p>
         </div>
       );
     });
