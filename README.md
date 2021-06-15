@@ -108,3 +108,6 @@ Music is a social experience, and the next iterations of Cheraoke will embrace t
 - Enable users to upload portfolio pics.
 - Allow users to make their profiles public, followers-only, or fully private.
 - Enable filters on video.
+- Newsfeed.
+- Add Like button feature.
+- Enable comment and delete video features.

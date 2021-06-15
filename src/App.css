@@ -4,14 +4,14 @@ html {
 }
 
 body {
-  margin-bottom: 9vh; /*  Margin bottom by footer height  */
+  margin-bottom: 9vh;
 }
 
 .navbar {
-  position:sticky;
-  top:0;
+  position: sticky;
+  top: 0;
   z-index: 1;
-  height:9vh
+  height: 9vh;
 }
 
 .footer {
@@ -19,7 +19,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 9vh;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -28,18 +28,19 @@ body {
   background-image: url("https://image.freepik.com/free-vector/cartoon-theater-stage-with-red-curtains_107791-1850.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment:fixed;
-  width:100%;
-  min-height:82vh;
-  height:80%;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 82vh;
+  height: 80%;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   font-weight: bold;
-  color:rgba(0, 99, 66, 0.986);
+  color: rgba(0, 99, 66, 0.986);
   -webkit-text-stroke: 1px #282828;
-	text-shadow: 0px 4px 4px #282828;
+  text-shadow: 0px 4px 4px #282828;
 }
 
 h1 {
@@ -50,17 +51,18 @@ h2 {
   font-size: 35px;
 }
 
-.whiteText, .aboutText {
+.whiteText,
+.aboutText {
   color: white;
   text-align: center;
 }
 
-.aboutText{
+.aboutText {
   margin: auto;
 }
 
 .searchDiv {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: center;
@@ -73,7 +75,7 @@ h2 {
 }
 
 .searchForm label {
-  color:white;
+  color: white;
 }
 
 .searchForm input[type="submit"] {
@@ -87,10 +89,10 @@ h2 {
   padding: 50px;
 }
 .video {
-  padding:50px;
+  padding: 50px;
 }
 .recordDiv {
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -109,5 +111,5 @@ h2 {
   align-items: center;
 }
 .recordForm label {
-  color:white;
+  color: white;
 }

@@ -12,11 +12,6 @@ const Welcome = () => {
         some inspiration? Unmute the video and bask in the musical muse. We
         believe in you!
       </p>
-      {/* <img
-        className="mic"
-        src="https://res.cloudinary.com/sei412-om/image/upload/v1623440005/mic_pmdu7o.png"
-      /> */}
-
       <Search />
     </div>
   );
