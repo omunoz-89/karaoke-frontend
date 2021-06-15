@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import VideoPlayer from "./VideoPlayer";
+import {Redirect} from 'react-router-dom'
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Record = (props) => {
@@ -8,7 +10,7 @@ const Record = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [showButton, setShowButton] = useState(true);
-  console.log("this is show", showButton);
+  const [redirect, setRedirect] = useState(false)  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ const Record = (props) => {
       const response = await axios.post(url, data);
       console.log("******************************");
       console.log(response.data);
+      setRedirect(true)
     } catch (err) {
       console.log(err);
     }
@@ -46,6 +49,11 @@ const Record = (props) => {
   //   setShowButton(false);
   // }, []);
 
+  if (redirect === true) {
+      return(
+          <Redirect to =  {`/users/${props.user.id}`} />
+      )
+  } else {
   return (
     <div className="videoDiv">
       <div>
@@ -110,7 +118,8 @@ const Record = (props) => {
         </form>
       </div>
     </div>
-  );
+     );
+    }
 };
 
 export default Record;
