@@ -17,10 +17,9 @@ const User = (props) => {
     if (videos === null) {
       setVideoList("You have no recorded videos");
     } else {
-      const videoList = await respJSON.videos.map((vid, idx) => {
-        setVideoList(
-          <div className="col-3">
-            <div key={idx} className="card">
+      const theVideoList = await respJSON.videos.map((vid, idx) => {
+        return <div className="col-3">
+               <div key={idx} className="card">
               <a href={window.location.origin + `/videos/${vid._id}`}>
                 <img className="cardImg" src={vid.thumbnail} alt={vid.title} />
               </a>
@@ -31,8 +30,9 @@ const User = (props) => {
               </div>
             </div>
           </div>
-        );
+   
       });
+      setVideoList(theVideoList)
     }
   };
   useEffect(() => {
