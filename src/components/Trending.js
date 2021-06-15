@@ -23,7 +23,9 @@ const Trending = (props) => {
         return (
           <div className="col">
             <div key={idx} className="card">
-            <a href={window.location.origin+`/videos/${vid._id}`}><img className='cardImg' src={vid.thumbnail} alt={vid.title} /></a>
+              <a href={window.location.origin + `/videos/${vid._id}`}>
+                <img className="cardImg" src={vid.thumbnail} alt={vid.title} />
+              </a>
               <div className="card-body">
                 <h6 className="card-title">{vid.title}</h6>
                 <p className="card-text">Desc: {vid.description}</p>
@@ -32,10 +34,8 @@ const Trending = (props) => {
             </div>
           </div>
         );
-
       });
       setArray(videoList);
-
     }
   }, [videos]);
 
