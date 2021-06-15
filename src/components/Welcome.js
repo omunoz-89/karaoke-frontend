@@ -1,9 +1,7 @@
 import React from "react";
 import Search from "./Search";
-import VideoPlayer from "./VideoPlayer";
 
 const Welcome = () => {
-  // const ytURL = "ubTIBlx4xTw?t=23";
   return (
     <div>
       <h1 className="welcomeText">
