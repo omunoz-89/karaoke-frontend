@@ -17,8 +17,12 @@ body {
   text-align: center;
 }
 
-.card{
+.card {
   border: 0px;
+}
+
+.col-4 {
+  margin-bottom: 25px;
 }
 
 .video-responsive {
