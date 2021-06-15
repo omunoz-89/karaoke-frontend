@@ -32,10 +32,8 @@ const Trending = (props) => {
             </div>
           </div>
         );
-
       });
       setArray(videoList);
-
     }
   }, [videos]);
 

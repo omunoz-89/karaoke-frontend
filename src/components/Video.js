@@ -17,8 +17,8 @@ const Video = (props) => {
       return (
         <div key={idx}>
           <hr />
-          <p>{c.content}</p>
-          <p>Likes: {c.likes}</p>
+          <p className="whiteText">{c.content}</p>
+          <p className="whiteText">Likes: {c.likes}</p>
         </div>
       );
     });
@@ -35,7 +35,6 @@ const Video = (props) => {
         <div className="col-sm-2"></div>
         <div className="col-sm-8">
           <div className="card">
-            {/* <img className="cardImg" src={video.thumbnail} alt={video.title} /> */}
             <div className="video-responsive">
               <iframe
                 width="100%"

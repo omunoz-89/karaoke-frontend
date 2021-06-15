@@ -2,99 +2,99 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
-  margin-bottom: 60px; /*  Margin bottom by footer height  */
+  margin-bottom: 9vh;
 }
+
 .navbar {
-  position:sticky;
-  top:0;
+  position: sticky;
+  top: 0;
   z-index: 1;
+  height: 9vh;
 }
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  line-height: 60px; /* Vertically center the text there */
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* @keyframes movingMic {
-  0%  {left:150px; top:0px; opacity: 1;}
-  10%  {left:150px; top:150px; opacity: 1;}
-  20%  {left:150px; top:300px;opacity: 1;}
-  30%  {left:450px; top:300px; opacity: 0}
-  40% {left:750px; top:300px; opacity: 0;}
-  50%  {left:1050px; top:300px; opacity: 1;}
-  60%  {left:1050px; top:150px; opacity: 1;}
-  70%  {left:1050px; top:0px;opacity: 1;}
-  80%  {left:750px; top:0px; opacity: 0}
-  90% {left:450px; top:0px; opacity: 0;}
-  100%  {left:150px; top:0px; opacity: 1;}
-} */
 .container5 {
   background-image: url("https://image.freepik.com/free-vector/cartoon-theater-stage-with-red-curtains_107791-1850.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment:fixed;
-  width:100%;
-  min-height:82vh;
-  height:80%;
-  animation-name: movingMic;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 82vh;
+  height: 80%;
 }
-/* .mic {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  animation-name: movingMic;
-  animation-duration: 16s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-} */
-h1, h2 {
+
+h1,
+h2 {
   text-align: center;
   font-weight: bold;
-  color:rgba(0, 99, 66, 0.986);
+  color: rgba(0, 99, 66, 0.986);
   -webkit-text-stroke: 1px #282828;
-	text-shadow: 0px 4px 4px #282828;
+  text-shadow: 0px 4px 4px #282828;
 }
+
 h1 {
   font-size: 50px;
 }
+
 h2 {
   font-size: 35px;
 }
-.welcomeVid {
-  display:flex;
-  justify-content: space-evenly;
-}
-p {
+
+.whiteText,
+.aboutText {
   color: white;
   text-align: center;
 }
+
+.aboutText {
+  margin: auto;
+}
+
 .searchDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   text-align: center;
 }
+
 .searchForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .searchForm label {
-  color:white;
+  color: white;
 }
+
 .searchForm input[type="submit"] {
   margin-top: 30px;
 }
-.resultsDiv {
-  text-align: center;
-}
+
 .videoDiv {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   padding: 50px;
 }
 .video {
-  padding:50px;
+  padding: 50px;
+}
+.recordDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .aboutDiv {
   display: flex;
@@ -109,4 +109,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.recordForm label {
+  color: white;
 }

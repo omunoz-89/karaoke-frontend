@@ -2,62 +2,63 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import setAuthToken from '../utils/setAuthToken';
-import jwt_decode from 'jwt-decode';
+import setAuthToken from "../utils/setAuthToken";
+import jwt_decode from "jwt-decode";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-
 const Signup = (props) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-    const handleName = (e) => {
-        setName(e.target.value);
-    }
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    }
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
 
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-    }
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
-    const handleConfirmPassword = (e) => {
-        setConfirmPassword(e.target.value);
-    }
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
 
-
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // check to make sure passwords match
     if (password === confirmPassword && password.length >= 8) {
-        const payload = { name, email, password };
-        let url = `${REACT_APP_SERVER_URL}/api/users/signup`;
-        try {
-            let response = await axios.post(url, payload);
-            const { token } = response.data
-            localStorage.setItem('jwtToken', token)
-            setAuthToken(token)
-            const decoded = await jwt_decode(token)
-            props.nowCurrentUser(decoded)
-            setRedirect(true);
-        } catch (error) {
-            alert('Error occurred, please try again...');
-        }
+      const payload = { name, email, password };
+      let url = `${REACT_APP_SERVER_URL}/api/users/signup`;
+      try {
+        let response = await axios.post(url, payload);
+        const { token } = response.data;
+        localStorage.setItem("jwtToken", token);
+        setAuthToken(token);
+        const decoded = await jwt_decode(token);
+        props.nowCurrentUser(decoded);
+        setRedirect(true);
+      } catch (error) {
+        alert("Error occurred, please try again...");
+      }
     } else {
-        if (!password === confirmPassword) {
-            alert('Password and Confirm Password need to match. Please try again...');
-        } else {
-            alert('Password needs to be at least 8 characters or more. Please try again...');
-        }
+      if (!password === confirmPassword) {
+        alert(
+          "Password and Confirm Password need to match. Please try again..."
+        );
+      } else {
+        alert(
+          "Password needs to be at least 8 characters or more. Please try again..."
+        );
+      }
     }
-}
+  };
 
-if (redirect) return <Redirect to="/profile" />
+  if (redirect) return <Redirect to="/profile" />;
 
   return (
     <div className="row mt-4">
@@ -66,22 +67,48 @@ if (redirect) return <Redirect to="/profile" />
           <h2 className="py-2">Signup</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" value={name} onChange={handleName} className="form-control"/>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+                className="form-control"
+              />
             </div>
             <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" value={email} onChange={handleEmail} className="form-control"/>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                className="form-control"
+              />
             </div>
             <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" value={password} onChange={handlePassword} className="form-control"/>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                className="form-control"
+              />
             </div>
             <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control"/>
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={handleConfirmPassword}
+                className="form-control"
+              />
             </div>
-            <button type="submit" className="btn btn-primary float-right">Submit</button>
+            <button type="submit" className="btn btn-primary float-right">
+              Submit
+            </button>
           </form>
         </div>
       </div>

@@ -6,7 +6,6 @@ const Profile = (props) => {
   const { exp, id, name, email } = props.user;
   const expirationTime = new Date(exp * 1000);
   let currentTime = Date.now();
-  console.log(String(expirationTime));
 
   if (currentTime >= expirationTime) {
     handleLogout();
@@ -15,13 +14,13 @@ const Profile = (props) => {
   const userData = props.user ? (
     <div className="profileDiv">
       <h1>Profile</h1>
-      <p>
+      <p className="whiteText">
         <strong>Name:</strong> {name}
       </p>
-      <p>
+      <p className="whiteText">
         <strong>Email:</strong> {email}
       </p>
-      <p>
+      <p className="whiteText">
         <strong>ID:</strong> {id}
       </p>
       <iframe
