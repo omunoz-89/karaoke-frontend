@@ -15,13 +15,13 @@ const Profile = (props) => {
   const userData = props.user ? (
     <div className="profileDiv">
       <h1>Profile</h1>
-      <p>
+      <p className="whiteText">
         <strong>Name:</strong> {name}
       </p>
-      <p>
+      <p className="whiteText">
         <strong>Email:</strong> {email}
       </p>
-      <p>
+      <p className="whiteText">
         <strong>ID:</strong> {id}
       </p>
       <iframe

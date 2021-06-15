@@ -24,8 +24,8 @@ const Search = (props) => {
 
   if (results.length === 0) {
     return (
-      <div>
-        <div className="searchDiv">
+      <div className="searchDiv">
+        
           <iframe
             width="40%"
             height="350"
@@ -35,7 +35,7 @@ const Search = (props) => {
             allowFullScreen
             title="Embedded video"
           />
-        </div>
+        
 
         <div className="searchDiv">
           <form className="searchForm" onSubmit={searchKaraoke}>
