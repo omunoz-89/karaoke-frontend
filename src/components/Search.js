@@ -23,15 +23,6 @@ const Search = (props) => {
   if (results.length === 0) {
     return (
       <div className="searchDiv">
-        <iframe
-          width="40%"
-          height="350"
-          src="https://www.youtube.com/embed/ubTIBlx4xTw"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="Embedded video"
-        />
 
         <div className="searchDiv">
           <form className="searchForm" onSubmit={searchKaraoke}>

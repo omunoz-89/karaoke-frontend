@@ -5,12 +5,10 @@ const Welcome = () => {
   return (
     <div>
       <h1 className="welcomeText">
-        Welcome to Cheraoke, you beautiful person you!
+        Welcome to Share-aoke!
       </h1>
       <p className="whiteText">
-        Enter a song and artist, click submit, and get ready for glory! Need
-        some inspiration? Unmute the video and bask in the musical muse. We
-        believe in you!
+        Enter a song and artist, click submit, and get ready for glory!
       </p>
       <Search />
     </div>
