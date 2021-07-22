@@ -42,26 +42,27 @@ const Record = (props) => {
     return <Redirect to={`/users/${props.user.id}`} />;
   } else {
     return (
-      <div className="videoDiv">
-        <div>
+      <div className="videoDiv align-items-center justify-content-evenly">
+        <div className= 'text-center'>
           <h1>Recording Page</h1>
           <h2>Prepare To Be Amaaaaazing!</h2>
           <button onClick={onClick}>Take a deep breath and click here!</button>
 
           <p className="whiteText">
             Cue the karaoke track to where you'd like to start singing, hit
-            record, wait for the countdown, then release your inner Cheraoke
+            record, wait for the countdown, then release your inner Share-aoke
             spirit! Make sure to fill out the form after recording and click
             submit.
           </p>
         </div>
         <div>
           <form
-            className="recordForm"
+            className="recordForm d-flex flex-column mx-auto"
             action="/api/videos/"
             method="POST"
             onSubmit={handleSubmit}
           >
+              <div className = 'record-items d-flex flex-row'>
             <camera
               is="custom"
               data-app-id="a-1433fe10-ac5b-0139-42d3-0aac5b511429"
@@ -70,7 +71,9 @@ const Record = (props) => {
               data-maxlength="420"
               data-autopreview="true"
             ></camera>
+            <VideoPlayer ytURL={ytURL} />
 
+            </div>
             <h2>Tell us about your track!</h2>
             <label>Title</label>
             <input
@@ -92,7 +95,6 @@ const Record = (props) => {
             <label htmlFor="private">Private:</label>
             <input type="radio" name="public" value={false} />
             <input type="submit" value="Submit" />
-            <VideoPlayer ytURL={ytURL} />
           </form>
         </div>
       </div>
